@@ -1,4 +1,2 @@
-LeetCode
-========
+including java and cpp.
 
-solutions for leetcode OJ: http://oj.leetcode.com/problems/
