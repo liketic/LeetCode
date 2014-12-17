@@ -1,16 +1,20 @@
-class Solution {
+class Solution
+{
 public:
-    vector<int> searchRange(int A[], int n, int target) {
+    vector<int> searchRange(int A[], int n, int target)
+    {
         int l1 = 0, r1 = n - 1;
-        while (l1 <= r1) {
+        while (l1 <= r1)
+        {
             int m = (l1 + r1) / 2;
             if (A[m] >= target)
                 r1 = m - 1;
             else l1 = m + 1;
         }
-        //cout << l1 << " " << r1 << endl;
+
         int l2 = 0, r2 = n - 1;
-        while (l2 <= r2) {
+        while (l2 <= r2)
+        {
             int m = (l2 + r2) / 2;
             if (A[m] <= target)
                 l2 = m + 1;
@@ -21,7 +25,7 @@ public:
             l1 = r2 = -1;
         ans.push_back(l1);
         ans.push_back(r2);
-       // cout << l1 << " " << r2 << endl;
-       return ans;
+        // cout << l1 << " " << r2 << endl;
+        return ans;
     }
 };

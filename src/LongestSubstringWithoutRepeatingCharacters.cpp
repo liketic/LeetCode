@@ -1,15 +1,17 @@
-class Solution {
+class Solution
+{
 public:
-    int lengthOfLongestSubstring(string s) {
+    int lengthOfLongestSubstring(string s)
+    {
         int len = s.length();
         int d[26], t = 0, ans = 0, c[26];
         memset(d, 0, sizeof(d));
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < len; i++)
+        {
             int k = s[i] - 'a';
-            if (d[k]) {
+            if (d[k])
+            {
                 ans = max(ans, i - t);
-               // cout << t << " " << i << endl;
-               // cout << s.substr(t + 1, i - t - 1) << endl;
                 t = c[k] + 1;
                 memset(d, 0, sizeof(d));
                 for (int j = t; j < i; j++)

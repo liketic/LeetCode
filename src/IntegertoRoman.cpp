@@ -1,14 +1,17 @@
-class Solution {
+class Solution
+{
 public:
 
-    string strmul(string s, int t) {
+    string strmul(string s, int t)
+    {
         string ans = "";
         for (int i = 0; i < t; i++)
             ans += s;
         return ans;
     }
 
-    string intToRoman(int num) {
+    string intToRoman(int num)
+    {
         string ans = "";
         int t = num % 10;
         num /= 10;

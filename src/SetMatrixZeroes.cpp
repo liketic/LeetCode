@@ -1,6 +1,8 @@
-class Solution {
+class Solution
+{
 public:
-    void setZeroes(vector<vector<int> > &matrix) {
+    void setZeroes(vector<vector<int> > &matrix)
+    {
         int n = matrix.size();
         if (n == 0)return;
         int m = matrix[0].size();

@@ -1,11 +1,14 @@
-class Solution {
+class Solution
+{
 public:
-    bool hasCycle(ListNode *head) {
+    bool hasCycle(ListNode *head)
+    {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
         ListNode *p = head, *q = head;
-        
-        while (p && q) {
+
+        while (p && q)
+        {
             p = p->next;
             q = q->next;
             if (q == NULL)
@@ -15,6 +18,6 @@ public:
                 return true;
         }
         return false;
-        
+
     }
 };

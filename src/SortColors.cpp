@@ -1,6 +1,8 @@
-class Solution {
+class Solution
+{
 public:
-    void sortColors(int A[], int n) {
+    void sortColors(int A[], int n)
+    {
         int t[3];
         t[0] = t[1] = t[2] = 0;
         for (int i = 0; i < n; i++)

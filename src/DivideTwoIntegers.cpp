@@ -1,26 +1,32 @@
-class Solution {
+class Solution
+{
 public:
-    int divide(int dividend, int divisor) {
+    int divide(int dividend, int divisor)
+    {
 
         long long d = dividend, di = divisor;
 
         int f = 1;
 
-        if (dividend < 0) {
+        if (dividend < 0)
+        {
             d *= -1;
             f *= -1;
         }
-        if (divisor < 0) {
+        if (divisor < 0)
+        {
             di *= -1;
             f *= -1;
         }
         long long l = 0, r = d;
 
-        while (l <= r) {
+        while (l <= r)
+        {
             long long mid = (l + r) / 2;
             if (mid * di > d)
                 r = mid - 1;
-            else {
+            else
+            {
                 l = mid + 1;
             }
         }

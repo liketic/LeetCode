@@ -6,7 +6,8 @@ using namespace std;
 const int N = 100005;
 
 
-class Solution {
+class Solution
+{
 private:
     int next[N];
 
@@ -14,8 +15,10 @@ private:
     {
         next[0] = -1;
         int j = next[0];
-        for (int i = 1; i < str_len; i++) {
-            while (j >= 0 && str[i] != str[j + 1]) {
+        for (int i = 1; i < str_len; i++)
+        {
+            while (j >= 0 && str[i] != str[j + 1])
+            {
                 j = next[j];
             }
             if (str[i] == str[j + 1])
@@ -32,13 +35,16 @@ private:
         Cal_Next(sub_str, next, sub_len);
         int j = next[0];
 
-        for (int i = 0; i < main_len; i++) {
-            while (j >= 0 && main_str[i] != sub_str[j + 1]) {
+        for (int i = 0; i < main_len; i++)
+        {
+            while (j >= 0 && main_str[i] != sub_str[j + 1])
+            {
                 j = next[j];
             }
             if (main_str[i] == sub_str[j + 1])
                 j++;
-            if (j == sub_len - 1) {
+            if (j == sub_len - 1)
+            {
                 //find it
                 return (i - sub_len + 1);
                 //j=next[j];
@@ -47,9 +53,11 @@ private:
         return -1;
     }
 public:
-    int strStr(char *haystack, char *needle) {
+    int strStr(char *haystack, char *needle)
+    {
         int lenn = strlen(needle);
-        if (!lenn) { // if needle is "" then kmp is not right
+        if (!lenn)   // if needle is "" then kmp is not right
+        {
             return 0;
         }
         return KMP(haystack, needle, next);
@@ -57,7 +65,8 @@ public:
 };
 
 
-int main() {
+int main()
+{
 
     Solution s;
 

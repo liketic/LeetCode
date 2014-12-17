@@ -1,11 +1,13 @@
-class Solution {
+class Solution
+{
 public:
-    vector<int> getRow(int r) {
+    vector<int> getRow(int r)
+    {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
         vector<int> a, b;
         r++;
-        
+
         for (int i = 0; i < r; i++)
         {
             b.clear();
@@ -13,7 +15,8 @@ public:
             {
                 if (j == 0 || j == i)
                     b.push_back(1);
-                else {
+                else
+                {
                     b.push_back(a[j - 1] + a[j]);
                 }
             }

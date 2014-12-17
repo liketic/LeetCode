@@ -1,15 +1,18 @@
-class Solution {
+class Solution
+{
 public:
-    int atoi(const char *str) {
+    int atoi(const char *str)
+    {
         int len = strlen(str);
         if (len == 0)
             return 0;
         long long ans = 0, i = 0, j = 1;
 
         while (str[i] && !isalnum(str[i])
-               && str[i] != '+' && str[i] != '-')
-                ++i;
-        if (str[i] == '-' || str[i] == '+') {
+                && str[i] != '+' && str[i] != '-')
+            ++i;
+        if (str[i] == '-' || str[i] == '+')
+        {
             j = str[i] == '-' ? -1 : 1;
             ++i;
         }

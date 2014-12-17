@@ -1,10 +1,12 @@
-class Solution {
+class Solution
+{
 public:
-    vector<vector<int> > generateMatrix(int n) {
-       // int ans[n][n];
+    vector<vector<int> > generateMatrix(int n)
+    {
         vector< vector<int> > ans;
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
+        {
             vector<int> p(n, 0);
             ans.push_back(p);
         }
@@ -23,34 +25,35 @@ public:
         for (int i = 0; i < q + 2; i++)
             vis[0][i] = vis[n + 1][i] = 1;
 
-        while (t < q * n) {
+        while (t < q * n)
+        {
             int j = y;
-            while (!vis[x][j]) {
-                //ans.push_back(m[x - 1][j - 1]);
+            while (!vis[x][j])
+            {
                 ans[x - 1][j - 1] = ++t;
                 vis[x][j] = 1;
                 if (vis[x][j + 1])break;
                 j++;
             }
             int i = x + 1;
-            while (!vis[i][j]) {
-                //ans.push_back(m[i - 1][j - 1]);
+            while (!vis[i][j])
+            {
                 ans[i - 1][j - 1] = ++t;
                 vis[i][j] = 1;
                 if (vis[i + 1][j])break;
                 i++;
             }
             j--;
-            while (!vis[i][j]) {
-                //ans.push_back(m[i - 1][j - 1]);
+            while (!vis[i][j])
+            {
                 ans[i - 1][j - 1] = ++t;
                 vis[i][j] = 1;
                 if (vis[i][j - 1])break;
                 j--;
             }
             i--;
-            while (!vis[i][j]) {
-                //ans.push_back(m[i - 1][j - 1]);
+            while (!vis[i][j])
+            {
                 ans[i - 1][j - 1] = ++t;
                 vis[i][j] = 1;
                 if (vis[i - 1][j])break;

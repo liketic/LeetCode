@@ -1,13 +1,15 @@
-class Solution {
+class Solution
+{
 public:
-    vector<string> change(char dig) {
+    vector<string> change(char dig)
+    {
         vector<string> ans;
-        switch(dig - '0') {
+        switch(dig - '0')
+        {
         case 0:
             ans.push_back(" ");
             break;
         case 1:
-            //ans.push_back("");
             break;
         case 2:
             ans.push_back("a");
@@ -54,21 +56,25 @@ public:
         }
         return ans;
     }
-    vector<string> letterCombinations(string digits) {
+    vector<string> letterCombinations(string digits)
+    {
         int len = digits.length();
         vector<string> s, t;
-        if (digits == "") {
+        if (digits == "")
+        {
             s.push_back("");
             return s;
         }
 
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < len; i++)
+        {
             vector <string> x = change(digits[i]);
             int n = x.size();
             if (i == 0)
                 for (int j = 0; j < n; j++)
                     s.push_back(x[j]);
-            else {
+            else
+            {
                 int m = s.size();
                 for (int j = 0; j < n; j++)
                     for (int k = 0; k < m; k++)
