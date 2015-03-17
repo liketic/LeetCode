@@ -16,14 +16,6 @@ private:
 		ss << b;
 		ss >> y;
 
-		//cout << x <<  "--" << y << endl;
-
-		for (int i = 0; i < x.length() && i < y.length(); i++) {
-			if (x[i] != y[i]) {
-				return x[i] > y[i];
-			}
-		}
-
 		return (x + y) > (y + x);
 	}
 public:
