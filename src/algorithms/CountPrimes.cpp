@@ -14,6 +14,8 @@ public:
                 is[j] = 1;
             }
         }
+        delete is;
+        is = NULL;
         return ans;
     }
 };
