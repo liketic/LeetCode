@@ -1,6 +1,15 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
 class Solution
 {
-public:
+private:
     int value(TreeNode *root)
     {
         return (root == NULL ? 0 : root->val);
@@ -15,7 +24,7 @@ public:
         int t = max(value(root->left), value(root->right));
         root->val += (t > 0 ? t : 0);
     }
-
+public:
     int maxPathSum(TreeNode *root)
     {
         init(root);
@@ -23,12 +32,8 @@ public:
         int ans = -10000000;
         p.push(root);
 
-        while (1)
+        while (!p.empty())
         {
-            if (p.empty())
-            {
-                break;
-            }
             TreeNode *t = p.front();
             p.pop();
             ans = max(ans, t->val);
