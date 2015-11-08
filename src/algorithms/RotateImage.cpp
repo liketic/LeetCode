@@ -4,7 +4,6 @@ public:
         int r = mt.size();
         if (r == 0) return;
 
-
         for (int i = 0; i < r / 2; i++) {
             for (int j = i; j < r - i - 1; j++) {
                 int x = i, y = j;

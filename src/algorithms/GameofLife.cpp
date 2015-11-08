@@ -21,7 +21,7 @@ public:
                         // dies
                     } else if (liveCount == 2 || liveCount == 3) {
                         bd[i][j] += 2;
-                    } else if (liveCount > 3){
+                    } else if (liveCount > 3) {
                         // dies
                     }
                 } else {
@@ -33,12 +33,12 @@ public:
         }
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                bd[i][j] /= 2;
+                bd[i][j] >>= 1;
             }
         }
     }
 
-    bool isIn(int x, int y, int m, int n) {
+    bool onMaze(int x, int y, int m, int n) {
         return (x >= 0 && x < m && y >= 0 && y < n);
     }
 
@@ -47,6 +47,6 @@ public:
     }
 
     bool isLived(int x, int y, int m, int n, vector<vector<int>>& bd) {
-        return isIn(x, y, m, n) && isLived(bd[x][y]);
+        return onMaze(x, y, m, n) && isLived(bd[x][y]);
     }
 };

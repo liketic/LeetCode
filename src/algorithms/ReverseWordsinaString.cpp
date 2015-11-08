@@ -32,7 +32,7 @@ public:
 		bool prevIsBlank = false;
 		bool isFirst = true;
 		int j = 0;
-		//cout << s << endl;
+
 		for (int i = 0; i < n; i++) {
 			if (this->isVaild(s[i])) {
 				if (prevIsBlank && !isFirst) {
@@ -44,7 +44,6 @@ public:
 				prevIsBlank = true;
 			}
 		}
-		//cout << j << endl;
 		s = s.substr(0, j);
 	}
 };

@@ -13,24 +13,41 @@ public:
         vector<string> ans;
         if (!root) return ans;
 
-        if (!root->left && !root->right) {
-            ans.push_back(this->toStr(root->val));
+        if (isLeaf(root)) {
+            ans.push_back(toString(root->val));
             return ans;
         }
+        string rootVal = toString(root->val);
+
         vector<string> left = binaryTreePaths(root->left);
-        for (int i = 0; i < left.size(); i++) {
-            ans.push_back(this->toStr(root->val) + "->" + left[i]);
-        }
+        addPaths(ans, rootVal, left);
+
         vector<string> right = binaryTreePaths(root->right);
-        for (int i = 0; i < right.size(); i++) {
-            ans.push_back(this->toStr(root->val) + "->" + right[i]);
-        }
+        addPaths(ans, rootVal, right);
+
         return ans;
     }
 private:
-    string toStr(int i) {
-        std::stringstream str1;
-        str1 << i;
-        return str1.str();
+    void addPaths(vector<string>& dest,
+                  const string& root,
+                  vector<string>& subPaths) {
+        int lenOfPaths = subPaths.size();
+        for (int i = 0; i < lenOfPaths; i++) {
+            dest.push_back(concat(root, subPaths[i]));
+        }
+    }
+
+    bool isLeaf(TreeNode* root) {
+        return root && (!root->left) && (!root->right);
+    }
+
+    string concat(const string& a, const string& b) {
+        return a + "->" + b;
+    }
+
+    string toString(int i) {
+        std::stringstream ss;
+        ss << i;
+        return ss.str();
     }
 };

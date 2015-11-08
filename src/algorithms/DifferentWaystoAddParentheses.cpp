@@ -5,12 +5,13 @@ public:
         vector<int> nums;
         vector<char> ccs;
         int start = 0;
+        int lenOfInput = input.length();
 
-        for (int i = 0; i < input.length(); i++) {
+        for (int i = 0; i < lenOfInput; i++) {
             if (isOp(input[i])) {
                 ccs.push_back(input[i]);
             }
-            if (i == input.length() - 1 || isOp(input[i + 1])) {
+            if (i == lenOfInput - 1 || isOp(input[i + 1])) {
                 int t = 0;
                 for (int j = start; j <= i; j++) {
                     t = t * 10 + input[j] - '0';
@@ -19,19 +20,22 @@ public:
                 nums.push_back(t);
             }
         }
-        return this->compute(nums, ccs);
+        return compute(nums, ccs);
     }
 
 
 private:
-    vector<int> compute(vector<int> num, vector<char> ops) {
+    vector<int> compute(vector<int>& num, vector<char>& ops) {
         vector<int> ans;
-        if (num.size() == 1) {
+        int sizeOfNum = num.size();
+        int sizeOfOps = ops.size();
+
+        if (sizeOfNum == 1) {
             ans.push_back(num[0]);
             return ans;
         }
 
-        for (int i = 0; i < ops.size(); i++) {
+        for (int i = 0; i < sizeOfOps; i++) {
 
             vector<int> tt1, tt2;
             vector<char> cc1, cc2;
@@ -42,17 +46,20 @@ private:
                     cc1.push_back(ops[j]);
                 }
             }
-            for (int j = i + 1; j < num.size(); j++) {
+            for (int j = i + 1; j < sizeOfNum; j++) {
                 tt2.push_back(num[j]);
-                if (j < ops.size()) {
+                if (j < sizeOfOps) {
                     cc2.push_back(ops[j]);
                 }
             }
             vector<int> a = compute(tt1, cc1);
             vector<int> b = compute(tt2, cc2);
-            for (int x = 0; x < a.size(); x++) {
-                for (int y = 0; y < b.size(); y++) {
-                      ans.push_back(calculate(a[x], b[y], ops[i]));
+            int sizeOfA = a.size();
+            int sizeOfB = b.size();
+
+            for (int x = 0; x < sizeOfA; x++) {
+                for (int y = 0; y < sizeOfB; y++) {
+                    ans.push_back(calculate(a[x], b[y], ops[i]));
                 }
             }
 
@@ -66,10 +73,14 @@ private:
 
     int calculate(int a, int b, char oper) {
         switch(oper) {
-            case '+': return a + b;
-            case '-': return a - b;
-            case '*': return a * b;
-            case '/': return a / b;
+        case '+':
+            return a + b;
+        case '-':
+            return a - b;
+        case '*':
+            return a * b;
+        case '/':
+            return a / b;
         }
     }
 };

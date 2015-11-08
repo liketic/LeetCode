@@ -1,5 +1,5 @@
 
-struct node{
+struct node {
     int v, i;
 };
 
@@ -8,11 +8,9 @@ bool cmp(const node& a, const node& b) {
     return a.v < b.v;
 }
 
-class Solution
-{
+class Solution {
 public:
-    vector<int> twoSum(vector<int> &numbers, int target)
-    {
+    vector<int> twoSum(vector<int> &numbers, int target) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
         //sort(numbers.begin(), numbers.end());

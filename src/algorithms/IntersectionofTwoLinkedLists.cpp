@@ -11,11 +11,9 @@
 //    ListNode(int x) : val(x), next(NULL) {}
 //};
 
-class Solution
-{
+class Solution {
 public:
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
-    {
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         int lA = 0, lB = 0;
         ListNode* p = headA;
         for (; p; p = p->next) {

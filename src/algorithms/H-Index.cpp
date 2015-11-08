@@ -2,9 +2,11 @@ class Solution {
 public:
     int hIndex(vector<int>& citations) {
         int ans = 0;
-        for (int i = 0; i <= citations.size(); i++) {
+        int sizeOfCitations = citations.size();
+
+        for (int i = 0; i <= sizeOfCitations; i++) {
             int t = 0;
-            for (int j = 0; j < citations.size(); j++) {
+            for (int j = 0; j < sizeOfCitations; j++) {
                 if (citations[j] >= i) t++;
             }
             if (t >= i) {

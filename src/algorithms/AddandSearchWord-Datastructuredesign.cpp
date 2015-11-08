@@ -65,7 +65,7 @@ public:
     }
 
 private:
-    TrieNode* tn;
+    TrieNode* tn; // store all words using trie
 };
 
 

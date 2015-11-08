@@ -10,35 +10,27 @@
 //    ListNode(int x) : val(x), next(NULL) {}
 //};
 
-class Solution
-{
+class Solution {
 public:
-    ListNode *removeNthFromEnd(ListNode *head, int n)
-    {
-        if (head == NULL)
-        {
+    ListNode *removeNthFromEnd(ListNode *head, int n) {
+        if (head == NULL) {
             return head;
         }
         n--;
         ListNode *p = head, *q = head, *s;
-        while (n)
-        {
+        while (n) {
             n--;
             q = q->next;
         }
-        while (q->next)
-        {
+        while (q->next) {
             s = p;
             p = p->next;
             q = q->next;
         }
 
-        if (p == head)
-        {
+        if (p == head) {
             head = head->next;
-        }
-        else
-        {
+        } else {
             s->next = p->next;
         }
         delete p;

@@ -24,7 +24,7 @@ public:
                             if (nums[k] < nums[pos]) {
                                 pos = k;
                             }
-                        } else{
+                        } else {
                             hasMoreThan = true;
                             pos = k;
                         }

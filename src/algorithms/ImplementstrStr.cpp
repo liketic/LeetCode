@@ -3,22 +3,18 @@
 using namespace std;
 
 //max size of haystack
-const int N = 100005;
+const int MAX_SIZE = 100005;
 
 
-class Solution
-{
+class Solution {
 private:
-    int next[N];
+    int next[MAX_SIZE];
 
-    void Cal_Next(char str[], int next[], int str_len)
-    {
+    void calNext(const string& str, int next[], int strLen) {
         next[0] = -1;
         int j = next[0];
-        for (int i = 1; i < str_len; i++)
-        {
-            while (j >= 0 && str[i] != str[j + 1])
-            {
+        for (int i = 1; i < strLen; i++) {
+            while (j >= 0 && str[i] != str[j + 1]) {
                 j = next[j];
             }
             if (str[i] == str[j + 1])
@@ -27,37 +23,30 @@ private:
         }
     }
 
+    int KMP(const string& mainStr, const string& subStr, int next[]) {
+        int lenOfMain = mainStr.length();
+        int lenOfSub = subStr.length();
 
-    int KMP(char main_str[], char sub_str[], int next[])
-    {
-        int main_len = strlen(main_str);
-        int sub_len = strlen(sub_str);
-        Cal_Next(sub_str, next, sub_len);
+        calNext(subStr, next, lenOfSub);
         int j = next[0];
 
-        for (int i = 0; i < main_len; i++)
-        {
-            while (j >= 0 && main_str[i] != sub_str[j + 1])
-            {
+        for (int i = 0; i < lenOfMain; i++) {
+            while (j >= 0 && mainStr[i] != subStr[j + 1]) {
                 j = next[j];
             }
-            if (main_str[i] == sub_str[j + 1])
+            if (mainStr[i] == subStr[j + 1])
                 j++;
-            if (j == sub_len - 1)
-            {
+            if (j == lenOfSub - 1) {
                 //find it
-                return (i - sub_len + 1);
-                //j=next[j];
+                return (i - lenOfSub + 1);
             }
         }
         return -1;
     }
 public:
-    int strStr(char *haystack, char *needle)
-    {
-        int lenn = strlen(needle);
-        if (!lenn)   // if needle is "" then kmp is not right
-        {
+    int strStr(string haystack, string needle) {
+        int lenOfNeedle = needle.length();
+        if (!lenOfNeedle) { // if needle is "" then kmp is not right
             return 0;
         }
         return KMP(haystack, needle, next);
@@ -65,8 +54,7 @@ public:
 };
 
 
-int main()
-{
+int main() {
 
     Solution s;
 

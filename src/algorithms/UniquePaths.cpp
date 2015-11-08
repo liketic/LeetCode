@@ -1,12 +1,14 @@
-class Solution
-{
+// define max size
+const int MAX_SIZE = 101;
+
+class Solution {
 public:
-    int uniquePaths(int m, int n)
-    {
-        int d[101][101];
+    int uniquePaths(int m, int n) {
+
+        int d[MAX_SIZE][MAX_SIZE];
+
         for (int i = 0; i < m; i++)
-            for (int j = 0; j < n; j++)
-            {
+            for (int j = 0; j < n; j++) {
                 if (i == 0 && j == 0)
                     d[i][j] = 1;
                 else if (i == 0)

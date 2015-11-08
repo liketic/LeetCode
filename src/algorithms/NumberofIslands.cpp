@@ -13,7 +13,7 @@ public:
             for (int j = 0; j < cNum; j++) {
                 if (grid[i][j] == '1') {
                     ans++;
-                    this->fillBlood(grid, i, j, rNum, cNum);
+                    fillBlood(grid, i, j, rNum, cNum);
                 }
             }
         }

@@ -2,7 +2,7 @@ class Solution {
 public:
     int rob(vector<int>& nums) {
         int n = nums.size();
-        int *d = new int[n];
+        int d[n];
         int ans = 0;
         for (int i = 0; i < n; i++) {
             if (i == 0) d[i] = nums[i];
@@ -14,9 +14,6 @@ public:
             }
             ans = max(ans, d[i]);
         }
-        delete d;
-        d = NULL;
-
         return ans;
     }
 };

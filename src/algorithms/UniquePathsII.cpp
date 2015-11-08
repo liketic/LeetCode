@@ -1,8 +1,6 @@
-class Solution
-{
+class Solution {
 public:
-    int uniquePathsWithObstacles(vector<vector<int> > &ob)
-    {
+    int uniquePathsWithObstacles(vector<vector<int> > &ob) {
         int n = ob.size();
         int m = ob[0].size();
         int d[n][m];

@@ -1,23 +1,27 @@
-class Solution
-{
+class Solution {
 public:
-    vector<int> postorderTraversal(TreeNode *root)
-    {
+    vector<int> postorderTraversal(TreeNode *root) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
-        vector<int> x;
-
+        vector<int> ans;
         if (root == NULL)
-            return x;
-        vector <int> a = postorderTraversal(root->left);
-        vector <int> b = postorderTraversal(root->right);
+            return ans;
 
-        for (int i = 0; i < a.size(); i++)
-            x.push_back(a[i]);
-        for (int i = 0; i < b.size(); i++)
-            x.push_back(b[i]);
-        x.push_back(root->val);
+        vector<int> left = postorderTraversal(root->left);
+        pushBackAll(ans, left);
 
-        return x;
+        vector<int> right = postorderTraversal(root->right);
+        pushBackAll(ans, right);
+
+        ans.push_back(root->val);
+        return ans;
+    }
+
+private:
+    void pushBackAll(vector<int>& dest, vector<int>& src) {
+        int sizeOfSrc = src.size();
+        for (int i = 0; i < sizeOfSrc; i++) {
+            dest.push_back(src[i]);
+        }
     }
 };

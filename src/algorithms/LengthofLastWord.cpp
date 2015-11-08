@@ -1,8 +1,6 @@
-class Solution
-{
+class Solution {
 public:
-    int lengthOfLastWord(const char *s)
-    {
+    int lengthOfLastWord(const char *s) {
         int len = 0;
         while (s[len] != '\0')len++;
         len--;

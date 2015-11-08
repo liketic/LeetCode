@@ -1,8 +1,6 @@
-class Solution
-{
+class Solution {
 public:
-    vector<string> anagrams(vector<string>& strs)
-    {
+    vector<string> anagrams(vector<string>& strs) {
         map<string, int> dict;
         int n = strs.size();
         bool vis[n];
@@ -10,12 +8,10 @@ public:
 
         string s;
 
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             s = toOrdered(strs[i]);
             int index = dict[s];
-            if (index)
-            {
+            if (index) {
                 vis[index - 1] = vis[i] = true;
                 continue;
             }
@@ -27,8 +23,7 @@ public:
         return ans;
     }
 private:
-    string toOrdered(string s)
-    {
+    string toOrdered(string s) {
         sort(s.begin(), s.end());
         return s;
     }

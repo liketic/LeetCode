@@ -18,7 +18,7 @@ public:
         }
         if (k <= a.size()) {
             return findKthLargest(a, k);
-        } else if (k <= len - b.size()){
+        } else if (k <= len - b.size()) {
             return t;
         } else {
             return findKthLargest(b, k - (len - b.size()));

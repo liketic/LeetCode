@@ -6,11 +6,9 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution
-{
+class Solution {
 public:
-    ListNode* removeElements(ListNode* head, int val)
-    {
+    ListNode* removeElements(ListNode* head, int val) {
         if (head == NULL) return head;
         ListNode *p = head;
         while (head && head->val == val) {

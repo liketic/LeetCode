@@ -2,7 +2,7 @@ class Solution {
 public:
     bool wordBreak(string s, unordered_set<string> &dict) {
     		int n = s.size();
-    		int *q = new int[n + 1];
+    		int q[n + 1];
     		memset(q, 0, sizeof(q));
     		q[0] = 1;
 

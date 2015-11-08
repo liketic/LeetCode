@@ -1,11 +1,8 @@
-class Solution
-{
+class Solution {
 public:
-    int sqrt(int x)
-    {
+    int sqrt(int x) {
         long long l = 0, r = x;
-        while (l <= r)
-        {
+        while (l <= r) {
             long long m = (l + r) / 2;
             if (m * m == x)
                 return m;

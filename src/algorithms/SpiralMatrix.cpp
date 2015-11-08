@@ -1,8 +1,6 @@
-class Solution
-{
+class Solution {
 public:
-    vector<int> spiralOrder(vector<vector<int> > &m)
-    {
+    vector<int> spiralOrder(vector<vector<int> > &m) {
 
         int n = m.size();
         vector<int> ans;
@@ -21,11 +19,9 @@ public:
         for (int i = 0; i < q + 2; i++)
             vis[0][i] = vis[n + 1][i] = 1;
 
-        while (t < q * n)
-        {
+        while (t < q * n) {
             int j = y;
-            while (!vis[x][j])
-            {
+            while (!vis[x][j]) {
                 ans.push_back(m[x - 1][j - 1]);
                 vis[x][j] = 1;
                 t++;
@@ -33,8 +29,7 @@ public:
                 j++;
             }
             int i = x + 1;
-            while (!vis[i][j])
-            {
+            while (!vis[i][j]) {
                 ans.push_back(m[i - 1][j - 1]);
                 vis[i][j] = 1;
                 t++;
@@ -42,8 +37,7 @@ public:
                 i++;
             }
             j--;
-            while (!vis[i][j])
-            {
+            while (!vis[i][j]) {
                 ans.push_back(m[i - 1][j - 1]);
                 vis[i][j] = 1;
                 t++;
@@ -51,8 +45,7 @@ public:
                 j--;
             }
             i--;
-            while (!vis[i][j])
-            {
+            while (!vis[i][j]) {
                 ans.push_back(m[i - 1][j - 1]);
                 vis[i][j] = 1;
                 t++;

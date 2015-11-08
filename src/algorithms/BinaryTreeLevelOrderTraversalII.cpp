@@ -1,46 +1,43 @@
 
-class Solution
-{
+class Solution {
 public:
-    vector<vector<int> > levelOrderBottom(TreeNode *root)
-    {
+    vector<vector<int> > levelOrderBottom(TreeNode *root) {
         vector <vector<int> > ans;
         if (root == NULL)
             return ans;
-        vector<TreeNode*> x, y;
-        x.push_back(root);
 
-        while (1)
-        {
-            int len = x.size();
-            vector <int> tt;
-            for (int i = 0; i < len; i++)
-            {
-                tt.push_back(x[i]->val);
-                if (x[i]->left)
-                {
-                    y.push_back(x[i]->left);
-                }
-                if (x[i]->right)
-                {
-                    y.push_back(x[i]->right);
-                }
-            }
-            ans.push_back(tt);
-            x = y;
-            y.clear();
-            if (x.size() == 0)
-            {
-                break;
-            }
-        }
+        queue<TreeNode*> levelQueue;
+        levelQueue.push(root);
 
-        for (int i = 0, j = ans.size() - 1; i < j; i++, j--)
-        {
-            vector <int> t = ans[i];
-            ans[i] = ans[j];
-            ans[j] = t;
+        while (!levelQueue.empty()) {
+            int sizeOfQueue = levelQueue.size();
+            vector<int> levelVals;
+
+            for (int i = 0; i < sizeOfQueue; i++) {
+                TreeNode* node = levelQueue.front();
+                levelQueue.pop();
+                levelVals.push_back(node->val);
+                addBackIfNotNull(levelQueue, node->left);
+                addBackIfNotNull(levelQueue, node->right);
+            }
+            ans.push_back(levelVals);
         }
+        reverseVector(ans);
         return ans;
+    }
+
+private:
+    void addBackIfNotNull(queue<TreeNode*>& q, TreeNode* tn) {
+        if (tn) {
+            q.push(tn);
+        }
+    }
+    void reverseVector(vector<vector<int>>& v) {
+        int len = v.size();
+        for (int i = 0, j = len - 1; i < j; i++, j--) {
+            vector <int> t = v[i];
+            v[i] = v[j];
+            v[j] = t;
+        }
     }
 };

@@ -1,8 +1,10 @@
+const int MAX_SIZE = 256;
+
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int len = s.length();
-        int d[256], t = 0, ans = 0, c[256];
+        int d[MAX_SIZE], t = 0, ans = 0, c[MAX_SIZE];
         memset(d, 0, sizeof(d));
 
         for (int i = 0; i < len; i++) {

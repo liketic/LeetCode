@@ -16,7 +16,7 @@ public:
         if (isLeaf(root)) return toString(root->val);
 
         return toString(root->val) + "(" + serialize(root->left) + ")"
-            + "(" + serialize(root->right) + ")";
+               + "(" + serialize(root->right) + ")";
     }
 
     bool isLeaf(TreeNode* root) {

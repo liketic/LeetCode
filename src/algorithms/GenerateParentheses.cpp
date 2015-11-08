@@ -4,11 +4,9 @@ struct node {
     int rc;
 };
 
-class Solution
-{
+class Solution {
 public:
-    vector<string> generateParenthesis(int n)
-    {
+    vector<string> generateParenthesis(int n) {
         queue<node> q;
         node first;
         first.s = "(";

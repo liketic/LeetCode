@@ -7,16 +7,13 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution
-{
+class Solution {
 private:
-    int value(TreeNode *root)
-    {
+    int value(TreeNode *root) {
         return (root == NULL ? 0 : root->val);
     }
 
-    void init(TreeNode *root)
-    {
+    void init(TreeNode *root) {
         if (root == NULL)
             return;
         init(root->left);
@@ -25,24 +22,20 @@ private:
         root->val += (t > 0 ? t : 0);
     }
 public:
-    int maxPathSum(TreeNode *root)
-    {
+    int maxPathSum(TreeNode *root) {
         init(root);
         queue <TreeNode*> p;
-        int ans = -10000000;
+        const int INF = 10000000;
+        int ans = -INF;
         p.push(root);
 
-        while (!p.empty())
-        {
+        while (!p.empty()) {
             TreeNode *t = p.front();
             p.pop();
             ans = max(ans, t->val);
-            if (value(t->right) > value(t->left))
-            {
+            if (value(t->right) > value(t->left)) {
                 ans = max(ans, t->val + value(t->left));
-            }
-            else
-            {
+            } else {
                 ans = max(ans, t->val + value(t->right));
             }
             if (t->left)

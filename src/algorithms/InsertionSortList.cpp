@@ -1,36 +1,26 @@
 
-class Solution
-{
+class Solution {
 public:
-    ListNode *insertionSortList(ListNode *head)
-    {
-
+    ListNode *insertionSortList(ListNode *head) {
         if (head == NULL)
             return head;
 
         ListNode *h = head;
 
-        while (h)
-        {
-
+        while (h) {
             ListNode *q = h->next;
 
             if (q == NULL)
                 break;
 
-            if (q->val < h->val)
-            {
-                if (q->val < head->val)
-                {
+            if (q->val < h->val) {
+                if (q->val < head->val) {
                     h->next = q->next;
                     q->next = head;
                     head = q;
-                }
-                else
-                {
+                } else {
                     ListNode* x = head, *y = head->next;
-                    while (y->val < q->val)
-                    {
+                    while (y->val < q->val) {
                         x = y;
                         y = y->next;
                     }
@@ -38,9 +28,7 @@ public:
                     q->next = y;
                     x->next = q;
                 }
-            }
-            else
-            {
+            } else {
                 h = h->next;
             }
         }

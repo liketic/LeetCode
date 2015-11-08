@@ -10,9 +10,10 @@ public:
             if (sum < 0) {
                 sum = 0;
                 startIndex = i + 1;
-            }
-            else {
-                if (i - startIndex + 1 == n) return startIndex;
+            } else {
+                if (i - startIndex + 1 == n) {
+                    return startIndex;
+                }
             }
         }
 

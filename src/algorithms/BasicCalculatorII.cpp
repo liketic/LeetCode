@@ -1,12 +1,11 @@
 class Solution {
 public:
     int calculate(string s) {
-        vector<string> numberAndOps = this->split(s);
+        vector<string> numberAndOps = tokenizeStringToVector(s);
         int n = numberAndOps.size();
-        int* d = new int[n];
-        char* c = new char[n];
-        int p = 0;
-        int q = 0;
+        int d[n], p = 0, q = 0;
+        char c[n];
+
         for (int i = 0; i < n; i++) {
             if (isMultiOrDivide(numberAndOps[i])) {
                 int op1 = d[p - 1];
@@ -17,12 +16,13 @@ public:
                     d[p - 1] = op1 * op2;
                 }
                 i++;
-            } else if (isPlusOrMinus(numberAndOps[i])){
+            } else if (isPlusOrMinus(numberAndOps[i])) {
                 c[q++] = numberAndOps[i][0];
             } else {
                 d[p++] = toInt(numberAndOps[i]);
             }
         }
+
         int ans = d[0];
         for (int i = 0; i < q; i++) {
             if (c[i] == '+') {
@@ -33,8 +33,9 @@ public:
         }
         return ans;
     }
+
 private:
-    vector<string> split(const string& s) {
+    vector<string> tokenizeStringToVector(const string& s) {
         vector<string> ans;
         int n = s.length();
         for (int i = 0; i < n;) {

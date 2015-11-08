@@ -7,11 +7,9 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution
-{
+class Solution {
 public:
-    bool isSameTree(TreeNode *p, TreeNode *q)
-    {
+    bool isSameTree(TreeNode *p, TreeNode *q) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
         if (p == NULL && q == NULL)

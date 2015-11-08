@@ -11,8 +11,10 @@ public:
     ListNode* rotateRight(ListNode* head, int k) {
         if (!head) return head;
         int len = getLength(head);
+
         if (k % len == 0) return head;
         int step = len - k % len;
+
         ListNode* ptr = head;
         while (step > 1) {
             step--;

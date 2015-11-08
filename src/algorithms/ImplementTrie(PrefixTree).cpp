@@ -1,13 +1,16 @@
+
+const int INDEX_SIZE = 26;
+
 class TrieNode {
 public:
     // Initialize your data structure here.
     TrieNode() {
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i < INDEX_SIZE; i++) {
             next[i] = NULL;
         }
         isLeaf = false;
     }
-    TrieNode* next[26];
+    TrieNode* next[INDEX_SIZE];
     bool isLeaf;
 };
 

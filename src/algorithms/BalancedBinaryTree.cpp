@@ -7,19 +7,16 @@
 //    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 //};
 
-
-class Solution
-{
+class Solution {
 public:
-    int height(TreeNode *root)
-    {
+    int height(TreeNode *root) {
         if (root == NULL)
             return 0;
         return max(height(root->left), height(root->right)) + 1;
     }
 
-    bool isBalanced(TreeNode *root)
-    {
+    // check if the tree which root node is 'root' is balanced
+    bool isBalanced(TreeNode *root) {
         if (root == NULL)
             return true;
         int hl = height(root->left);

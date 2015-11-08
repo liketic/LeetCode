@@ -1,9 +1,11 @@
-struct node{
+
+const int MAX_SIZE = 1000005;
+struct node {
     int v;
     int x, y;
 };
 
-node d[1000005];
+node d[MAX_SIZE];
 
 bool cmp(const node& a, const node& b) {
     if (a.v != b.v)
@@ -39,9 +41,9 @@ public:
                     while (j >= 0 && d[j].v == temp)j--;
                     j++;
                     for (; j < k; j++) {
-                        if (d[j].v != temp)break;
-                        if (d[j].x != d[i].x && d[j].x != d[i].y && d[j].y != d[i].x && d[j].y != d[i].y)
-                        {
+                        if (d[j].v != temp) break;
+                        if (d[j].x != d[i].x && d[j].x != d[i].y
+                                && d[j].y != d[i].x && d[j].y != d[i].y) {
                             vector<int> item;
                             item.push_back(nums[d[i].x]);
                             item.push_back(nums[d[i].y]);
@@ -61,8 +63,7 @@ public:
         }
         vector<vector<int> > ans2;
         int sizeofans = ans.size();
-        for (int i = 0; i < sizeofans; i++)
-        {
+        for (int i = 0; i < sizeofans; i++) {
             bool has = false;
             for (int j = 0; j < ans2.size(); j++) {
                 if (isEqual(ans[i], ans2[j])) {
