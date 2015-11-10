@@ -9,23 +9,22 @@ struct CacheNode {
     int value;
     CacheNode* prev;
     CacheNode* next;
-
     CacheNode(int k, int v): key(k), value(v), prev(NULL), next(NULL) {}
 };
 
+// define a hash table to store key and key point
+// a actual cache node
 struct TableNode {
     int key;
-    CacheNode* listNode;
+    CacheNode* cNode;
     TableNode* next;
     TableNode* prev;
-    TableNode(int v, CacheNode* t): key(v), listNode(t), next(NULL), prev(NULL) {}
+    TableNode(int v, CacheNode* t): key(v), cNode(t), next(NULL), prev(NULL) {}
 };
 
 class LRUCache {
 public:
-    LRUCache(int capacity) {
-        cacheSize = 0;
-        this->capacity = capacity;
+    LRUCache(int capacity): cacheSize(0), cacheCapacity(capacity) {
         hashTable = new TableNode*[capacity];
         for (int i = 0; i < capacity; i++) {
             hashTable[i] = new TableNode(0, NULL);
@@ -39,8 +38,8 @@ public:
     int get(int key) {
         TableNode* t = getKeyNode(key);
         if (t) {
-            moveListNodeToFront(t->listNode);
-            return t->listNode->value;
+            moveListNodeToFront(t->cNode);
+            return t->cNode->value;
         }
         return -1;
     }
@@ -48,11 +47,11 @@ public:
     void set(int key, int value) {
         TableNode* t = getKeyNode(key);
         if (t) {
-            t->listNode->value = value;
-            moveListNodeToFront(t->listNode);
+            t->cNode->value = value;
+            moveListNodeToFront(t->cNode);
             return;
         }
-        if (cacheSize == capacity) {
+        if (isCacheFull()) {
             removeLastNode();
             --cacheSize;
         }
@@ -61,39 +60,24 @@ public:
         addTableNode(tt);
     }
 
-    void debugTable() {
-        for (int i = 0; i < capacity; i++) {
-            cout << i << ": ";
-            if (hashTable[i]->next) {
-                TableNode* current = hashTable[i]->next;
-                while (current) {
-                    cout << "(" << current->key << ","  << current->listNode->value << ")";
-                    current = current->next;
-                }
-            }
-            cout << endl;
-        }
-    }
-
-    void debugList() {
-        CacheNode* n = head;
-        while (n) {
-            cout << "(" << n->key << "," << n->value << ")";
-            n = n->next;
-        }
-        cout << endl;
-    }
 private:
     TableNode** hashTable;
     CacheNode* head;
     CacheNode* tail;
     int cacheSize;
-    int capacity;
+    int cacheCapacity;
 
+    // a simple hash alogrithm
     int hashKey(int key) {
-        return (key % capacity);
+        return (key % cacheCapacity);
     }
 
+    // check whether cache is full or not
+    bool isCacheFull() {
+        return cacheSize == cacheCapacity;
+    }
+
+    // add a new node on hash table
     void addTableNode(CacheNode* ln) {
         int k = hashKey(ln->key);
         TableNode* tn = hashTable[k];
@@ -163,25 +147,6 @@ private:
         }
         return NULL;
     }
-
 };
 
-
-int main() {
-
-    LRUCache* c = new LRUCache(3);
-
-    for (int i = 1; i <= 10; i++) {
-        c->set(i, i);
-        c->set(i + 3, i);
-    }
-    for (int i = 1; i <= 10; i++) {
-        c->set(i, i);
-    }
-    for (int i = 1; i <= 100; i++) {
-        cout << c->get(i) << endl;
-    }
-
-    return 0;
-}
 
