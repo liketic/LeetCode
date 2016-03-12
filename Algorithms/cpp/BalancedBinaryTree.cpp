@@ -9,12 +9,13 @@
 
 class Solution {
 public:
+    
+    // get height of tree which root node is 'root'
     int height(TreeNode *root) {
-        if (root == NULL)
-            return 0;
+        if (!root) return 0;
         return max(height(root->left), height(root->right)) + 1;
     }
-
+    
     // check if the tree which root node is 'root' is balanced
     bool isBalanced(TreeNode *root) {
         if (root == NULL)
