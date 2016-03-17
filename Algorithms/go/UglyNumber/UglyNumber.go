@@ -1,6 +1,6 @@
 // Source : https://leetcode.com/problems/ugly-number/
-// Author : Li Ke
-// Date   : 2016-03-12
+// Author : Ke Li
+// Date   : 2016-03-17
 
 /***************************************************************************************
  *
@@ -15,22 +15,18 @@
  * all test cases.
  ***************************************************************************************/
 
-
-class Solution {
-public:
-    bool isUgly(int num) {
-        if (num > 1) {
-            while (num % 2 == 0) {
-                num /= 2;
-            }
-            while (num % 3 == 0) {
-                num /= 3;
-            }
-            while (num % 5 == 0) {
-                num /= 5;
-            }
-        }
-        return num == 1;
-    }
-};
-
+ func isUgly(num int) bool {
+     if num <= 1 {
+         return num == 1
+     }
+     for num % 2 == 0 {
+         num /= 2
+     }
+     for num % 3 == 0 {
+         num /= 3
+     }
+     for num % 5 == 0 {
+         num /= 5
+     }
+     return num == 1
+ }
