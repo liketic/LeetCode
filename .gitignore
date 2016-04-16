@@ -8,6 +8,7 @@ xidel/*
 *.o
 *.a
 *.so
+.idea
 
 # Folders
 _obj
