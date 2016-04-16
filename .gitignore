@@ -9,6 +9,7 @@ xidel/*
 *.a
 *.so
 .idea
+Algorithms/cpp/xidel/
 
 # Folders
 _obj
