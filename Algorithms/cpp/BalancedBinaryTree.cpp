@@ -8,22 +8,21 @@
 //};
 
 class Solution {
-public:
-    
-    // get height of tree which root node is 'root'
-    int height(TreeNode *root) {
-        if (!root) return 0;
-        return max(height(root->left), height(root->right)) + 1;
+private:
+    int check(TreeNode *root) {
+        if (!root) {
+            return 0;
+        }
+        int l = check(root->left);
+        int r = check(root->right);
+        if (l == -1 || r == -1 || abs(l - r) > 1) {
+            return -1;
+        }
+        return max(l, r) + 1;
     }
-    
+public:
     // check if the tree which root node is 'root' is balanced
     bool isBalanced(TreeNode *root) {
-        if (root == NULL)
-            return true;
-        int hl = height(root->left);
-        int hr = height(root->right);
-        if (abs(hl - hr) > 1)
-            return false;
-        return (isBalanced(root->left) && isBalanced(root->right));
+        return check(root) >= 0;
     }
 };
