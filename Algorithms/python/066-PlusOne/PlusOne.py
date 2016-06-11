@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: List[int]
         """
 
-        if len(digits) == 0:
+        if not digits:
             return digits
 
         s = len(digits) - 1

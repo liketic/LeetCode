@@ -5,9 +5,9 @@ class Solution(object):
         :type val: int
         :rtype: int
         """
-        k = -1
-        for i in range(len(nums)):
-            if nums[i] != val:
+        k = 0
+        for item in nums:
+            if item != val:
+                nums[k] = item
                 k += 1
-                nums[k] = nums[i]
-        return k + 1
+        return k
