@@ -1,4 +1,3 @@
-
 struct node {
     int v, i;
 };

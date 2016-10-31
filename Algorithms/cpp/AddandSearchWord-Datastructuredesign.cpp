@@ -103,9 +103,3 @@ private:
         return find(word, pos + 1, node->next[idx(word[pos])]);
     }
 };
-
-// Your WordDictionary object will be instantiated and called as such:
-// WordDictionary wordDictionary;
-// wordDictionary.addWord("word");
-// wordDictionary.search("pattern");
-

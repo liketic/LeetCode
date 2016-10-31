@@ -115,7 +115,7 @@ private:
         return result;
     }
     
-    // check if two vector is equal
+    // check if two vectors are equal
     bool equal(vector<int>& a, vector<int>& b) {
         for (int i = 0; i < 4; i++) {
             if (a[i] != b[i]) return false;

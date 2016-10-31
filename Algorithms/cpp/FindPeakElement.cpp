@@ -1,5 +1,3 @@
-
-
 class Solution {
 public:
     int findPeakElement(const vector<int> &num) {

@@ -1,4 +1,4 @@
-iclass Solution {
+class Solution {
 public:
     int threeSumClosest(vector<int> &a, int s) {
         // IMPORTANT: Please reset any member data you declared, as

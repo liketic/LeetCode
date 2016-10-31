@@ -9,7 +9,7 @@ public:
         string s;
 
         for (int i = 0; i < n; i++) {
-            s = toOrdered(strs[i]);
+            s = sortString(strs[i]);
             int index = dict[s];
             if (index) {
                 vis[index - 1] = vis[i] = true;
@@ -23,7 +23,7 @@ public:
         return ans;
     }
 private:
-    string toOrdered(string s) {
+    string sortString(string s) {
         sort(s.begin(), s.end());
         return s;
     }

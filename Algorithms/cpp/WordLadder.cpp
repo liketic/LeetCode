@@ -1,5 +1,3 @@
-
-
 class Solution {
 public:
     int ladderLength(const string& beginWord,
