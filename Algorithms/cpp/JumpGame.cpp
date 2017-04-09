@@ -1,15 +1,13 @@
 class Solution {
 public:
-
-    bool canJump(int A[], int n) {
-        bool B[n + 1];
-        memset(B, 0, sizeof(B));
-        int t = 0;
-        B[0] = 1;
+    bool canJump(vector<int>& nums) {
+        int maxPos = 0;
+        int n = nums.size();
+        
         for (int i = 0; i < n; i++)
-            if (B[i] || i <= t) {
-                t = max(t, i + A[i]);
+            if (i == 0 || i <= maxPos) {
+                maxPos = max(maxPos, i + nums[i]);
             }
-        return (t >= n - 1);
+        return (maxPos >= n - 1);
     }
 };
